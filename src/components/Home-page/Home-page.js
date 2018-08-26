@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 
-class Home extends React.Component{
+class Home extends Component{
   render(){
     return(
-        <div>HOLA MUNDO!!</div>
+      <div>
+        <h1>HOLA SOY EL HOME!!</h1>
+      </div>
     )
   }
 }
