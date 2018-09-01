@@ -3,11 +3,31 @@
   font-size: 5em;
 }
 
-.btn-facebook, .btn-twitter, .btn-google{
-  width: 32%;
+.brands-buttons{
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0);
+  border-color: rgba(255, 0, 0, 0, 0);
+  padding: 0px 0px 0px 0px !important;
 }
 
-.btn-success, .btn-secondary{
+.btn-facebook, .btn-twitter, .btn-google{
+  width: 33.33333%;
+}
+
+.btn-google:hover{
+  background-color: #b82f1a;
+}
+
+.btn-facebook:hover{
+  background-color: #1a3e8d;
+} 
+
+.btn-twitter:hover{
+  background-color: #2f8bd1;
+}
+
+.btn-success, .btn-secondary, .btn-info, .btn-warning{
+  color: #fff !important;
   width: 100%;
 }
 
@@ -28,8 +48,8 @@
 
 .card{
   width: 100%;
-  background-color: rgba(255, 0, 0, 0);
-  border: 0px;
+  background-color: #fff0 !important;
+  border: 0px !important;
 }
 
 .card-body{
@@ -53,16 +73,21 @@ input.ng-touched.ng-invalid{
 }
 
 .principal{
-  margin-left: 30%;
+  margin-left: 25%;
   width: 40%;
   transform: translateY(50%);
 }
 
+.registrate{
+  margin-top: 8px;
+  background-color: #fff0 !important;
+}
+
 .FondoPrincipal{
-  height:100vw;
+  height:300vw;
   width: 100vw;
   margin-left:0px;
-  background-image: url(../../assets/img/login-fondo.jpg) !important;
+  background-image: url(./login-fondo.jpg) !important;
   background-position: center center;
   background-size: cover;
   background-color: #ffffff;

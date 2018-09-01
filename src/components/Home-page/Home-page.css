@@ -1,0 +1,87 @@
+.fondo-principal{
+  width: 100vw;
+  min-height: 250vw;
+  max-height: 10000vw;
+  background-image: url(./main-fondo.jpg) !important;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #fff;
+}
+
+.container-fluid{
+  width: 100%;
+  padding-left: 0px;
+  margin-left:0px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.buscarProd{
+  width: 100%;
+
+}
+
+.btn-info{
+  width: 100% !important;
+}
+
+.card{
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 5px;
+}
+
+.nombreProd{
+  font-size: 2em;
+}
+
+.precioProd{
+  font-size: 1.5em;
+}
+
+.cantidadProd{
+  font-size: 1.5em;
+}
+
+.accionProd{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.unidades{
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 1.35em;
+  width: 35%;
+
+  margin-right: 5px;
+}
+
+.jumbotron{
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-left: 35px;
+  padding-right: 35px;
+  background-color: #fff;
+}
+
+.imgProd{
+  border: 0px;
+}
+
+@media (min-width: 768px){
+  .collection{
+    max-width: 24% !important;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-top: 1%;
+  }
+
+  .imgProd{
+    /*min-height: 40%;*/
+    max-height: 50%;
+  }
+
+}

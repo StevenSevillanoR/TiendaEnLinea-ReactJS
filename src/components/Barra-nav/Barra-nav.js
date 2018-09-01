@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
 import './Barra-nav.css';
 // import firebase from '@firebase/app';
 // import '@firebase/firestore';
@@ -15,7 +15,6 @@ class Barra extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">{this.state.name}</h1>
         </header>
         <p className="App-intro">

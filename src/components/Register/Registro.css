@@ -1,0 +1,65 @@
+.inicioSe{
+  text-align: center;
+  font-size: 5em;
+}
+
+.btn-facebook, .btn-twitter, .btn-google{
+  width: 32%;
+}
+
+.btn-success{
+  width: 100%;
+}
+
+.card{
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0);
+  border: 0px;
+}
+
+.card-body{
+  padding: 8% 0px 8% 0px;
+}
+
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+.enviar{
+  margin-top: 8%;
+}
+.error{
+    color: red;
+}
+
+.fondo{
+  background-color: rgba(255, 0, 0, 0);
+  border-color: rgba(255, 0, 0, 0, 0);
+  color: #fff;
+}
+
+.principal{
+  width: 40%;
+  transform: translateY(50%);
+}
+
+.fondoPrincipal{
+  height:100vw;
+  width: 100vw;
+  margin-left:0px;
+  background-image: url(./login-fondo.jpg) !important;
+  background-position: center center;
+  background-size: cover;
+  background-color: #ffffff;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+p{
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.registrate{
+  margin-top: 8px;
+  background-color: #fff0 !important;
+}

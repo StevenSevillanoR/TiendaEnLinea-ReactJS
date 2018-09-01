@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './components/App/App';
 import Barra from './components/Barra-nav/Barra-nav';
 import Registro from './components/Register/Registro';
@@ -10,27 +9,29 @@ import Home from './components/Home-page/Home-page';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import firebase from '@firebase/app';
-import '@firebase/firestore';
 import { FirestoreProvider } from 'react-firestore';
+import '@firebase/firestore';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
-const config = {
+/*const config = {
     apiKey: "AIzaSyAry5GZjem1fKYv6rHFBG-1YntzEQ4iIyU",
     authDomain: "tiendaenlinea-6ea52.firebaseapp.com",
     databaseURL: "https://tiendaenlinea-6ea52.firebaseio.com",
     projectId: "tiendaenlinea-6ea52",
     storageBucket: "tiendaenlinea-6ea52.appspot.com",
     messagingSenderId: "932548095533"
-};
+};*/
 
-var app = firebase.initializeApp(config);
+//var app = firebase.initializeApp(config);
 
-var db = firebase.firestore(app);
+//var db = firebase.firestore(app);
 
 const firestore = firebase.firestore();
   const settings = {/* your settings... */ timestampsInSnapshots: true};
   firestore.settings(settings);
 
-const productos = [];
+/*const productos = [];
 
 db.collection("productos").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -43,14 +44,14 @@ db.collection("productos").get().then((querySnapshot) => {
       console.log(productos);
     console.log(`${doc.id} => ${doc.data()}`);
     });
-});
+});*/
 
 ReactDOM.render((
   <FirestoreProvider firebase={firebase}>
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={App}/>
+          <Route exact path="/" component={Login}/>
           <Route path="/Barra" component={Barra}/>
           <Route path="/Home" component={Home}/>
           <Route path="/Login" component={Login}/>
