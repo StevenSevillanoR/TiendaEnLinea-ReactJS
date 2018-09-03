@@ -55,13 +55,37 @@ class Login extends Component{
      event.preventDefault(); 
   }  
 
+  onSubmitGoogle = (event) => {
+
+    const {
+      isLoginGoogle,
+    } = this.state;
+
+    const {
+      history,
+    } = this.props;
+
+    auth.doSignInWithGoogle()
+      .then(() => {
+        console.log('entre');
+        this.isLoginGoogle = true;
+        localStorage.setItem("GoogleKey", this.isLoginGoogle);
+        history.push("/home");
+      }).catch((err) => {
+        this.isLoginGoogle = false;
+        this.setState(byPropKey('error', err));
+        console.log(err);
+      });
+
+    event.preventDefault();
+  } 
+
   render(){
 
     const{
       email,
       password,
       error,
-      isLoginGoogle,
     } = this.state;
 
     const isInvalid = 
@@ -106,7 +130,7 @@ class Login extends Component{
               <div className="card">
                 <ButtonGroup className="card-body d-flex justify-content-around brands-buttons">
                   <Button type="button" className="btn btn-lg btn-facebook block"><i className="fab fa-facebook-f"></i> Facebook</Button>
-                  <Button type="button" className="btn btn-lg btn-google block"><i className="fab fa-google-plus-g"></i> Google</Button>
+                  <Button type="button" className="btn btn-lg btn-google block" onClick={this.onSubmitGoogle}><i className="fab fa-google-plus-g"></i> Google</Button>
                   <Button type="button" className="btn btn-lg btn-twitter block"><i className="fab fa-twitter"></i> Twitter</Button>
                 </ButtonGroup>
                 <SignUpLink />

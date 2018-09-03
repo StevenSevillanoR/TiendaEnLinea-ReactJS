@@ -6,6 +6,7 @@ import Registro from './components/Register/Registro';
 import Carrito from './components/Carrito-Compras/Carrito-compras';
 import Login from './components/Login/Login';
 import Home from './components/Home-page/Home-page';
+import Producto from './components/Producto/Producto';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import firebase from '@firebase/app';
@@ -57,6 +58,7 @@ ReactDOM.render((
           <Route path="/Login" component={Login}/>
           <Route path="/Carrito" component={Carrito}/>
           <Route path="/Registro" component={Registro}/>
+          <Route path="/Detalle" component={Producto} />
         </Switch>
       </div>
     </Router>

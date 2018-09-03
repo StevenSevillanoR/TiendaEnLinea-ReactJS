@@ -13,7 +13,7 @@ export const doSignInWithEmailAndPassword = (email, password) =>
   auth.signInWithEmailAndPassword(email, password);
 
 // Inicio de sesión con Google
-export const doSignInWithGoogle = (provider) =>
+export const doSignInWithGoogle = () =>
   auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
 // Cierre de sesión

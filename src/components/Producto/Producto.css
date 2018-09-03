@@ -1,0 +1,32 @@
+.container-fluid{
+  width: 100%;
+  padding-left: 0px;
+  margin-left:0px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.descripcion{
+  font-size: 2em;
+}
+
+.title{
+  padding-left: 15px;
+}
+
+.imgProd{
+  width: 100%;
+  max-height: 277px;
+}
+
+.card{
+  left: 12px;
+  border: 0px;
+}
+
+.btn-group{
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+}

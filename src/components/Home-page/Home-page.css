@@ -18,13 +18,14 @@
   padding-right: 0px;
 }
 
+.descripcion{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
 .buscarProd{
   width: 100%;
 
-}
-
-.btn-info{
-  width: 100% !important;
 }
 
 .card{
@@ -34,41 +35,60 @@
 }
 
 .nombreProd{
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 .precioProd{
-  font-size: 1.5em;
+  font-size: 0.8em;
 }
 
 .cantidadProd{
-  font-size: 1.5em;
+  font-size: 0.8em;
 }
 
 .accionProd{
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .unidades{
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
   font-size: 1.35em;
-  width: 35%;
-
-  margin-right: 5px;
+  width: 80% !important;
+  margin-left: 5px;
 }
 
 .jumbotron{
   margin-left: 5%;
   margin-right: 5%;
-  padding-left: 35px;
-  padding-right: 35px;
-  background-color: #fff;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  background-color: #fff !important;
+  margin-bottom: 0px !important;
 }
 
 .imgProd{
   border: 0px;
+}
+
+.collection{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  border: 1px solid rgb(0, 0, 0, 0.1) !important;
+}
+
+.btn-sm{
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
+
+.btn-md, .btn-info{
+
+  min-height: 38px;
+   
 }
 
 @media (min-width: 768px){
@@ -77,11 +97,27 @@
     margin-left: 0.5%;
     margin-right: 0.5%;
     margin-top: 1%;
+    
   }
 
   .imgProd{
-    /*min-height: 40%;*/
+    min-height: 40%;
     max-height: 50%;
   }
 
 }
+
+@media(max-width:1091px){
+  .accionProd{
+    width: 100% !important;
+  }
+  
+}
+
+@media (min-width: 1092px){
+  .btn-md, .btn-info{
+    padding-left: 9px !important;
+    font-size: 0.750rem !important;
+  }
+}
+
