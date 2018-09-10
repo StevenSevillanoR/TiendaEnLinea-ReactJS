@@ -21,6 +21,7 @@
 .descripcion{
   padding-left: 15px !important;
   padding-right: 15px !important;
+  max-height: 200px !important;
 }
 
 .buscarProd{
@@ -34,16 +35,21 @@
   padding-bottom: 5px;
 }
 
+.filtro{
+  font-size: 3rem;
+  color: black;
+}
+
 .nombreProd{
-  font-size: 1.8em;
+  font-size: 1.8em !important;
 }
 
 .precioProd{
-  font-size: 0.8em;
+  font-size: 0.8em !important;
 }
 
 .cantidadProd{
-  font-size: 0.8em;
+  font-size: 0.8em !important;
 }
 
 .accionProd{

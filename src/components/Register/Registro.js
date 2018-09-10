@@ -57,10 +57,13 @@ class Registro extends Component{
       error,
     } = this.state;
 
+    const emailValid = email.includes('@') && (email.includes('.com') || email.includes('.co') || email.includes('.es'));
+
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
-      email === '';      
+      email === '' || 
+      !emailValid;     
 
     return(
       <div className="col-sm-12 fondoPrincipal">
@@ -77,7 +80,7 @@ class Registro extends Component{
                     id="email-input" 
                     onChange={event => this.setState(byPropKey('email', event.target.value))}
                     required/>
-                  <label className="error">Debes ingresar un email válido</label>
+                  <label className="error" hidden={emailValid}>Debes ingresar un email válido</label>
               </div>
               <div className="form-group">
                 <label htmlFor="password-input">Contraseña</label>

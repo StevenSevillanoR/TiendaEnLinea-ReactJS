@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import { ButtonToolbar, Button, Label, ButtonGroup, Form, FormControl, FormGroup } from 'react-bootstrap';
 import { auth } from '../../Firebase';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './Login.css';
 import { SignUpLink } from '../Register/Registro';
 
 const SignInPage = ({ history }) =>
   <div>
     <Login history={history} />
-    
   </div>
 
 const INITIAL_STATE = {
@@ -88,10 +87,12 @@ class Login extends Component{
       error,
     } = this.state;
 
+    const emailValid = email.includes('@') && (email.includes('.com') || email.includes('.co') || email.includes('.es'));
+
     const isInvalid = 
       password === '' ||
       email === '' ||
-      !email.includes('@');
+      !emailValid;
 
     return(
       <div className="col-sm-12 FondoPrincipal">
@@ -108,7 +109,7 @@ class Login extends Component{
                 value={email}
                 onChange={event => this.setState(byPropKey('email', event.target.value))} 
                 required></FormControl>
-              <Label className="error" hidden={!isInvalid}>Debes ingresar un email válido</Label>
+              <Label className="error" hidden={emailValid}>Debes ingresar un email válido</Label>
             </FormGroup>
             <FormGroup className="form-group">
               <Label>Contraseña</Label>

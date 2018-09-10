@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
+//import App from './components/App/App';
 import Barra from './components/Barra-nav/Barra-nav';
 import Registro from './components/Register/Registro';
 import Carrito from './components/Carrito-Compras/Carrito-compras';

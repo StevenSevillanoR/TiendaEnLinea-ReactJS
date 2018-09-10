@@ -8,19 +8,19 @@ import '@firebase/firestore';
 export const doCreateUserWithEmailAndPassword = (email, password) =>
   auth.createUserAndRetrieveDataWithEmailAndPassword(email, password);
 
-// Inicio de Sessión Email y pass
+//Inicio de Sessión Email y pass
 export const doSignInWithEmailAndPassword = (email, password) =>
   auth.signInWithEmailAndPassword(email, password);
 
-// Inicio de sesión con Google
+//Inicio de sesión con Google
 export const doSignInWithGoogle = () =>
   auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
-// Cierre de sesión
+//Cierre de sesión
 export const doSignOut = () =>
   auth.signOut();
 
-/*  class AuthService extends Component{
+/*class AuthService extends Component{
 
   constructor(
     

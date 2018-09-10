@@ -1,0 +1,38 @@
+h1{
+  font-size: 30px;
+  padding-left: 15px;
+}
+
+.back{
+    padding-left: 15px !important;
+}
+
+.title{
+  padding-left: 15px;
+}
+
+.subtotal{
+  margin-left: 15px;
+  padding-top: 10px;
+  font-size: 1.5em !important;
+}
+
+.imgProd{
+  width: 100%;
+}
+
+.productosSel{
+
+  padding-top: 15px;
+}
+
+.containertotal{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: list-item;
+}
+
+.totalLabel{
+  display: block;
+}
