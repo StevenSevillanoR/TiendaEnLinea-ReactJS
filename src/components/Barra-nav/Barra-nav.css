@@ -20,6 +20,10 @@ nav{
   font-weight: bold;
 }
 
+.nav-item{
+  font-size: 1rem;
+}
+
 @media (min-width:1092px){
   .email{
 

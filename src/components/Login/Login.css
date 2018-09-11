@@ -1,6 +1,6 @@
 .inicioSe{
   text-align: center;
-  font-size: 5em;
+  font-size: 3em;
 }
 
 .brands-buttons{
@@ -93,4 +93,9 @@ input.ng-touched.ng-invalid{
   background-color: #ffffff;
   background-attachment: fixed;
   background-repeat: no-repeat;
+}
+
+#mensajeError{
+  color: #b82f1a;
+  text-shadow: 1px solid #ffffff;
 }

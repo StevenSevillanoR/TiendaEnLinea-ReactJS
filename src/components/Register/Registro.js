@@ -38,6 +38,8 @@ class Registro extends Component{
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        sessionStorage.setItem('Login', JSON.stringify(true));
+        console.log(JSON.parse(sessionStorage.getItem('Login')));
         this.setState({ ...INITIAL_STATE});
         history.push("/Home");
       })

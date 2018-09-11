@@ -4,6 +4,7 @@ import { auth } from '../../Firebase';
 import { withRouter } from 'react-router-dom';
 import './Login.css';
 import { SignUpLink } from '../Register/Registro';
+import SweetAlert from 'sweetalert2-react';
 
 const SignInPage = ({ history }) =>
   <div>
@@ -15,6 +16,7 @@ const INITIAL_STATE = {
   password: '',
   isLoginGoogle: false,
   error: null,
+  show: false,
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -42,13 +44,20 @@ class Login extends Component{
 
     auth.doSignInWithEmailAndPassword(email, password)
       .then(()=>{
-        this.isLoginGoogle=false;
-        localStorage.setItem("GoogleKey", isLoginGoogle);
+        this.setState({isLoginGoogle:false});
+        localStorage.setItem("GoogleKey", this.state.isLoginGoogle);
+        sessionStorage.setItem('Login', JSON.stringify(true));
+        console.log(JSON.parse(sessionStorage.getItem('Login')));
         this.setState({...INITIAL_STATE});
         history.push("/home");
       }).catch((err)=>{
-        this.setState(byPropKey('error', err));
-        console.log(err);
+        if (err.message === 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+          this.setState({ error: 'No hay registro de usuario correspondiente a este identificador. El usuario puede haber sido eliminado.', show: true });
+        }else{
+          this.setState({ error: 'La contraseña no es válida o el usuario no tiene una contraseña.', show: true });
+        }
+        
+        console.log(err, this.state.error, this.state.show);
       });
 
      event.preventDefault(); 
@@ -67,8 +76,11 @@ class Login extends Component{
     auth.doSignInWithGoogle()
       .then(() => {
         console.log('entre');
-        this.isLoginGoogle = true;
-        localStorage.setItem("GoogleKey", this.isLoginGoogle);
+        this.setState({ isLoginGoogle: true });
+        localStorage.setItem("GoogleKey", this.state.isLoginGoogle);
+        sessionStorage.setItem('Login', JSON.stringify(true));
+        console.log(JSON.parse(localStorage.getItem('GoogleKey')));
+        console.log(JSON.parse(sessionStorage.getItem('Login')));
         history.push("/home");
       }).catch((err) => {
         this.isLoginGoogle = false;
@@ -79,12 +91,18 @@ class Login extends Component{
     event.preventDefault();
   } 
 
+  componentWillMount(){
+    this.setState({show: true})
+    console.log(this.state.show)
+  }
+
   render(){
 
     const{
       email,
       password,
       error,
+      show,
     } = this.state;
 
     const emailValid = email.includes('@') && (email.includes('.com') || email.includes('.co') || email.includes('.es'));
@@ -130,21 +148,29 @@ class Login extends Component{
             <div className="col-sm-12 mx-auto mt-2">
               <div className="card">
                 <ButtonGroup className="card-body d-flex justify-content-around brands-buttons">
-                  <Button type="button" className="btn btn-lg btn-facebook block"><i className="fab fa-facebook-f"></i> Facebook</Button>
-                  <Button type="button" className="btn btn-lg btn-google block" onClick={this.onSubmitGoogle}><i className="fab fa-google-plus-g"></i> Google</Button>
-                  <Button type="button" className="btn btn-lg btn-twitter block"><i className="fab fa-twitter"></i> Twitter</Button>
+                  <Button disabled={true} className="btn btn-lg btn-facebook block"><i className="fab fa-facebook-f"></i> Facebook</Button>
+                  <Button className="btn btn-lg btn-google block" onClick={this.onSubmitGoogle}><i className="fab fa-google-plus-g"></i> Google</Button>
+                  <Button disabled={true} className="btn btn-lg btn-twitter block"><i className="fab fa-twitter"></i> Twitter</Button>
                 </ButtonGroup>
                 <SignUpLink />
               </div>
             </div>
           </div>
+          {console.log(show)}
+          {error && 
+            <SweetAlert 
+              show={show}
+              title="Acceso Denegado"
+              type = 'error'
+              text={this.state.error}
+              onConfirm={() => this.setState({ show: false })}
+            />
+          }
         </div>
-        {error && <p>{error.message}</p>}
       </div>
     )
   }
 }
-
 
 export default withRouter(SignInPage);
 

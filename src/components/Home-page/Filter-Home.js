@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Home-page.css';
 import CircularJSON from 'circular-json';
 import Barra from '../Barra-nav/Barra-nav';
-import * as barra from '../Barra-nav/Barra-nav'; 
+import * as badge from '../Barra-nav/Badge'; 
 import Carrito from '../Carrito-Compras/Carrito-compras';
 //import Home from './Home-page';
 //import { withRouter } from 'react-router-dom';
@@ -22,6 +22,7 @@ let tot;
 let total = Number(sessionStorage.getItem('Total'));
 let nomTemp = [];
 let nombres = [];
+//let sumaBadge = 0;
 
 const FiltroP = ({ history }) =>
   <div>
@@ -158,10 +159,16 @@ class Filtro extends Component{
   }
 
   onCantidad = (cantidad) => {
+    let sumaBadge = 0;
+    sessionStorage.setItem('Badge', cantidad.target.value);
     console.log(cantidad.target.value);
     console.log(cantidad.target.id);
     let cant = cantidad.target.value;
     let idCant = cantidad.target.id;
+    
+    sumaBadge = sumaBadge + Number(sessionStorage.getItem('Badge'));
+    sessionStorage.setItem('Badge', sumaBadge);
+    console.log(sumaBadge);
     this.cantidades(idCant, cant);
   }
 
@@ -200,7 +207,16 @@ class Filtro extends Component{
   }
 
   setIdProCart(nom) {
-    console.log(nom, nombres);
+    nombres = JSON.parse(sessionStorage.getItem('Nombres'));
+    if(nombres === null){
+      nombres = []
+    }else{
+      nombres.forEach(temp => {
+        nomTemp.push(temp.nombre)
+      })
+    }
+
+    console.log(nom, nombres, nomTemp);
     let cantidad = 0;
     let names = [];
     let boleano = false;
@@ -259,15 +275,17 @@ class Filtro extends Component{
       total = 0;
       nomTemp = [];
     }
-
     console.log(nombres)
-    sessionStorage.setItem('Nombres', JSON.stringify(nombres));
+
+    //getProCart()
+    sessionStorage.setItem('Nombres', CircularJSON.stringify(nombres));
     console.log(JSON.parse(sessionStorage.getItem('Nombres')));
     //this.nom_producto.next(nom);*/
   }
 
 }
 
+//Este metodo no funciona para nada
 export let getProCart = () => {
   console.log(nombres)  
   return <Carrito Nombres = {nombres}></Carrito>;
@@ -288,7 +306,7 @@ export let shoppCartBadge = () => {
 
   //window.location.href = "/Home/Barra";
   console.log(total)
-  barra.MostrarBadge();
+  badge.updateBadge();
   
   return total;
 }

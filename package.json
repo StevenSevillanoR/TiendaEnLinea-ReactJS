@@ -13,7 +13,8 @@
     "react-firestore": "^0.8.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "reactstrap": "^6.4.0"
+    "reactstrap": "^6.4.0",
+    "sweetalert2-react": "^0.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
