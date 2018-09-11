@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
+import {Collapse, /*Navbar*/ NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {auth} from '../../Firebase/firebase';
 import './Barra-nav.css';
 import Badge from './Badge';
 
-const BarraNav = ({ history }) =>
-  <div>
-    <Barra history={history} />
-  </div>
-
-let counter = sessionStorage.getItem('Total');
+//let counter = sessionStorage.getItem('Total');
 let isLogin = false;
 let emailUsuario = '';
 let fotoUsuario = '';
@@ -30,17 +25,7 @@ class Barra extends Component {
     }
     
     console.log(this.state.contador);
-    this.isLoginAuth();
-
-    //console.log(fi.shoppCartBadge())
-
-    /*contador = fi.shoppCartBadge();
-    if (contador == null)
-      contador = 0;
-    else {
-      contador = contador.length
-    }
-    this.updateNotification = this.updateNotification.bind(this)*/
+    this.getAuth();
   }
 
   componentWillMount(){
@@ -53,27 +38,22 @@ class Barra extends Component {
 
   isLoginOut = (event) =>{
 
-    const {
-      history,
-    } = this.props;
+    sessionStorage.setItem('Login', false);
+    sessionStorage.setItem('Total', 0);
+    console.log(JSON.parse(sessionStorage.getItem('Login')));
 
     auth.doSignOut()
-      .then(()=>{
-        sessionStorage.setItem('Total', 0);
-        sessionStorage.setItem('Login', false);
-        window.location.href="/Login";
-        //history.push("/Login");
+      .then(()=>{        
+        //window.location.href="/Login";
       }).catch((err) => {
-        //this.setState(byPropKey('error', err));
         console.log(err);
       });
       
     event.preventDefault();
   }
 
-  getAuth() {
-    //let authorization = auth.authState.map(auth => auth);
-    //console.log(authorization);
+  getAuth = () => {
+
     let authorization = [];
     auth.onAuthStateChanged(auth=>{
       console.log(auth.email);
@@ -82,29 +62,13 @@ class Barra extends Component {
       nombreUsuario = auth.displayName;
       console.log(auth.photoURL);
       fotoUsuario = auth.photoURL;
-
+      isLogin = true;
       authorization = auth;
       console.log(authorization);
     });
     console.log(authorization);
-    return authorization;
-  }
-
-  isLoginAuth = () => {
-    let auth = this.getAuth();
-    console.log(auth);
-    console.log(JSON.parse(localStorage.getItem('GoogleKey')))
-      if (auth) {
-        
-        isLogin = true;
-        nombreUsuario = auth.displayName;
-        emailUsuario = auth.email;
-        fotoUsuario = auth.photoURL;
-      } else {
-        isLogin = false;
-      }
-
     console.log(nombreUsuario, emailUsuario, fotoUsuario);
+    return authorization;
   }
 
   render() {
@@ -115,9 +79,9 @@ class Barra extends Component {
     
 
     let boleano = false;
-    console.log(this.state.contador)
+    console.log(contador)
 
-    Number(this.state.contador) === 0 ? boleano = true : boleano = false;
+    Number(contador) === 0 ? boleano = true : boleano = false;
     console.log(boleano);
     
 
@@ -127,7 +91,7 @@ class Barra extends Component {
         <NavbarToggler type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </NavbarToggler>
-        <div className="collapse navbar-collapse" id="navbarColor03">
+        <Collapse className="collapse navbar-collapse" id="navbarColor03">
           <ul className="navbar-nav mr-auto d-none d-lg-block">
 
           </ul>
@@ -158,25 +122,11 @@ class Barra extends Component {
               <span className="badge pill badge-secondary">{nombreUsuario}</span>
             </li>
           </Nav>
-        </div>
+        </Collapse>
       </nav>
     );
   }
 }
-
-/*Barra.defaultProps = {
-  Badge: Number(sessionStorage.getItem('Total')),
-}*/
-
-export let MostrarBadge = () => {
-  //Barra.actualizar(sessionStorage.getItem('Total'));
-  //console.log(Barra.defaultProps);
-  //miBarra.actualizar(sessionStorage.getItem('Total'));
-  counter = Number(sessionStorage.getItem('Total'));
-  console.log(counter);
-}
-
-
 
 export default Barra;
 

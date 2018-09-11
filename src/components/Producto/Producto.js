@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Jumbotron, Button, ButtonGroup, Label, Col, Row } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { FirestoreDocument } from 'react-firestore';
 //import Home from '../Home-page/Home-page';
 import * as home from '../Home-page/Home-page';
@@ -51,14 +51,14 @@ class Producto extends Component{
       
         const {
             id,
-            productos
+            //productos
         } = this.state;
 
         console.log(id);
 
       let boleano = false;
 
-      if(id =='' || id == undefined){
+      if(id ==='' || id === undefined){
         console.log(id)
         boleano = false;
       }else{
@@ -86,18 +86,18 @@ class Producto extends Component{
                               </div>
                               <hr className="my-4"/>
                               <div className="row">
-                                  <div className="card-image col-sm-6">
+                                  <Col className="card-image" sm="6">
                                       <img src={"images/img/"+data.nombre.toLowerCase()+".jpg"} className="img-thumbnail imgProd" alt={data.nombre}/>
                                       <br />
-                                  </div>
-                                  <div className="col-sm-6 descripcion">
+                                  </Col>
+                                  <Col sm="6" className="descripcion">
                                       <br />
                                       <Label className="precioProducto"><b>Precio:</b> €<span> {data.precio} </span></Label>
                                       <br />
                                       <Label className="cantidadProducto"><b>Unidades disponibles: </b> <span>{data.cantidad} </span></Label>
                                       <br />
                                       <br />
-                                  </div>
+                                  </Col>
                               </div>
                               <br/>
                               <div className="row back">
@@ -119,7 +119,7 @@ class Producto extends Component{
         )
     }
 
-    onAtras = (event) => {
+    onAtras = () => {
         /*const{
             history,
         } = this.props;

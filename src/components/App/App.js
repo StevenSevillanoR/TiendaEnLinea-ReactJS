@@ -43,6 +43,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const fakeAuth = () => {
 
   let isAuthenticated=false;
+  console.log(JSON.parse(sessionStorage.getItem('Login')));
 
   if (JSON.parse(sessionStorage.getItem('Login'))===true){
     isAuthenticated = true;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Barra-nav.css';
 
-let boleano = true;
+//let boleano = true;
 
 class Badge extends Component{
     constructor(props){

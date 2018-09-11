@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Barra from '../Barra-nav/Barra-nav';
 import * as service from '../../service/Service';
 import {Button, ButtonGroup, Container, Jumbotron, Col, Row} from 'reactstrap';
-import { Link } from 'react-router-dom';
 import CircularJSON from 'circular-json';
 import {db} from '../../Firebase/firebase';
 import SweetAlert from 'sweetalert2-react';
@@ -30,7 +29,7 @@ class Carrito extends Component{
 
     nombres.forEach(elemento => {
       product.forEach(element => {
-        if(elemento.nombre == element.nombre){
+        if(elemento.nombre === element.nombre){
           prod.push({
             id: element.id,
             nombre: elemento.nombre,
@@ -74,16 +73,16 @@ class Carrito extends Component{
       <Container fluid className="container-fluid fondo-principal">
         <Barra Badge={sessionStorage.getItem('Total')}></Barra>
         <Jumbotron>
-          <div className="row card-body">
+          <Row className="card-body">
             <div className="row card col-sm-12">
-              <div className="row title">
+              <Row className="title">
                 <h1><i className="fa fa-shopping-cart fa-lg text-info"></i> Carrito de Compras</h1>
-              </div>
+              </Row>
               <hr className="my-4"/>
-              <div className="row card-body">
+              <Row className="card-body">
               {console.log(this.state.productosC)}
               {this.state.productosC.map(producto=>(
-                  <div className="col-sm-7 productosSel" key={producto.id}>
+                  <Col sm="7" className="productosSel" key={producto.id}>
                     <div className="row">
                       <div className="col-sm-3">
                         <img src={"images/img/"+producto.nombre.toLowerCase()+".jpg"} className="img-thumbnail imgProd" alt={producto.nombre.toLowerCase()} />
@@ -97,14 +96,14 @@ class Carrito extends Component{
                         <br />
                       </div>
                     </div>
-                    <div className="row">
+                    <Row className="row">
                       <label className="subtotal"><b>Subtotal: €</b><span>{producto.subtotal}</span></label>
                       <br />
-                    </div>
+                    </Row>
                     <hr className="my-4" />                              
-                </div>
+                </Col>
               ))}
-                <div className="col-sm-5 descripcion">
+                <Col sm="5" className="descripcion">
                   <div className="row">
                     <div className="col-sm-12 containertotal">
                       <div className="row totalLabel">
@@ -127,15 +126,15 @@ class Carrito extends Component{
                       <br/>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Col>
+              </Row>
               <div className="row back">
                 <ButtonGroup>
                   <Button type="button" outline color="primary" size="lg" onClick={this.onAtras}>Atras</Button>
                 </ButtonGroup>
               </div>
             </div>
-          </div>
+          </Row>
         </Jumbotron>          
       </Container>
     )
@@ -174,7 +173,7 @@ class Carrito extends Component{
     console.log(product);
     product.forEach(element => {
       productos.forEach(elemento => {
-        if (element.nombre == elemento.nombre) {
+        if (element.nombre === elemento.nombre) {
           pActualizados.push({
             id: element.id,
             nombre: element.nombre,

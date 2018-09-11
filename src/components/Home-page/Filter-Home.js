@@ -1,15 +1,9 @@
 import React, {Component} from 'react';
 import './Home-page.css';
 import CircularJSON from 'circular-json';
-import Barra from '../Barra-nav/Barra-nav';
 import * as badge from '../Barra-nav/Badge'; 
 import Carrito from '../Carrito-Compras/Carrito-compras';
-//import Home from './Home-page';
-//import { withRouter } from 'react-router-dom';
-import { Button, ButtonGroup, Input, Jumbotron, Container, Row, Col } from 'reactstrap';
-//import ErrorBoundary from '../Error';
-
-//const miBarra = new Barra();
+import { Button, ButtonGroup, Input, Row, Col } from 'reactstrap';
 
 let id = '';
 let idA = '';
@@ -24,10 +18,11 @@ let nomTemp = [];
 let nombres = [];
 //let sumaBadge = 0;
 
-const FiltroP = ({ history }) =>
+/*const FiltroP = ({ history }) =>
   <div>
     <Filtro history={history} />
   </div>
+*/
 
 class Filtro extends Component{
 
@@ -89,13 +84,13 @@ class Filtro extends Component{
                 <label className="cantidadProd"><b>Unidades disponibles:</b> <span> {producto.cantidad}</span></label>
                 <br />
                 <Row>
-                  <Col sm="5" className="accionProd">
-                    <ButtonGroup>
+                  <Col md="12" lg="5" className="accionProd">
+                    <ButtonGroup className="vermas">
                       <Button size="md" color="info" id={`vermas_${producto.id}`} onClick={this.getIdF}>Ver Más</Button>
                     </ButtonGroup>
                   </Col>
-                  <Col sm="7" className="accionProd">
-                    <ButtonGroup>
+                  <Col md="12" lg="7" className="accionProd">
+                    <ButtonGroup className="anadir">
                       <Button color="warning" size="sm" id={`anadir_${producto.nombre}`} onClick={this.onAnadir}>Añadir</Button>{' '}
                       <Input className="unidades" id={`cant_${producto.nombre}`} type="number" onChange={this.onCantidad} placeholder="1" max={producto.cantidad} min="1" />
                     </ButtonGroup>
@@ -119,13 +114,13 @@ class Filtro extends Component{
                   <label className="cantidadProd"><b>Unidades disponibles:</b> <span> {producto.cantidad}</span></label>
                   <br />
                   <Row>
-                    <Col sm="5" className="accionProd">
-                      <ButtonGroup>
-                        <Button size="md" color="info" id={`vermas_${producto.id}`} onClick={this.getIdF.bind(this)}>Ver Más</Button>
+                    <Col md="12" lg="5" className="accionProd">
+                      <ButtonGroup className="vermas">
+                        <Button className="btn-vermas" size="md" color="info" id={`vermas_${producto.id}`} onClick={this.getIdF.bind(this)}>Ver Más</Button>
                       </ButtonGroup>
                     </Col>
-                    <Col sm="7" className="accionProd">
-                      <ButtonGroup>
+                    <Col md="12" lg="7" className="accionProd">
+                      <ButtonGroup className="anadir">
                         <Button color="warning" size="sm" id={`anadir_${producto.nombre}`} onClick={this.onAnadir}>Añadir</Button>{' '}
                         <Input className="unidades" id={`cant_${producto.nombre}`} type="number" onChange={this.onCantidad} placeholder="1" max={producto.cantidad} min="1" />
                       </ButtonGroup>
@@ -223,14 +218,14 @@ class Filtro extends Component{
     console.log(nomTemp);
     nomTemp.forEach(temp => {
       console.log(temp)
-      if (temp == nom) {
+      if (temp === nom) {
         boleano = true;
       }
     });
     console.log(boleano);
     nomTemp.push(nom);
 
-    if (nom != "" && nom != undefined) {
+    if (nom !== "" && nom !== undefined) {
       console.log(nom);
       if (Object.keys(nombres).length === 0) {
         nombres.push({
@@ -242,7 +237,7 @@ class Filtro extends Component{
         console.log(names);
         names.forEach((duplicado, index) => {
           console.log(duplicado.nombre);
-          if (duplicado.nombre == nom) {
+          if (duplicado.nombre === nom) {
             console.log(index);
             console.log(nom);
             console.log(cant);

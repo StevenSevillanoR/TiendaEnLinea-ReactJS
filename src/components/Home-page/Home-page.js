@@ -2,11 +2,9 @@ import React, {Component} from 'react';
 import './Home-page.css';
 import { FirestoreCollection } from 'react-firestore';
 import Barra from '../Barra-nav/Barra-nav';
-//import {auth} from '../../Firebase';
-import * as Pr from '../../service/Service';
 import ErrorBoundary from '../Error';
 import {withRouter} from 'react-router-dom';
-import {Button, ButtonGroup, Input, Jumbotron, Container, Row, Col} from 'reactstrap';
+import {Jumbotron, Container, Row, Col} from 'reactstrap';
 import Filtro from './Filter-Home';
 
 
@@ -32,30 +30,23 @@ class Home extends Component{
   constructor(props){
     super(props)
 
-    //console.log(Pr.getProductos());
-
     this.state={
       productos: [],
     };
   }
 
-  /*[{ id: "1", cantidad: 36, nombre: "Aguacate", precio: 5 },
-    { id: "2", cantidad: 68, nombre: "Ajo", precio: 2 },
-    { id: "3", cantidad: 20, nombre: "Almendras", precio: 8 },
-    { id: "4", cantidad: 35, nombre: "Arándanos", precio: 6 },
-    { id: "5", cantidad: 36, nombre: "Brocoli", precio: 5 }]*/
-
   render(){
 
+    
     const {
       productos,
     } = this.state;
-
-    console.log(this.state.productos)
+    
+    console.log(productos)
 
     let isVoid
 
-    if(this.state.productos !== [] && this.state.productos.length > 0){
+    if(productos !== [] && productos.length > 0){
       isVoid = false
       console.log(isVoid)
     }else{
@@ -81,15 +72,15 @@ class Home extends Component{
               <Container fluid className="fondo-principal">
                 <Barra Count={sessionStorage.getItem('Total')}></Barra>
               <Jumbotron>
-                <div className="row">
-                  <div className="col-sm-8">
+                <Row>
+                  <Col sm="8">
                     <h1 className="display-5"><span className="glyphicon glyphicon-th text-info"></span> Cátalogo de Productos</h1>
-                  </div>
-                  <div className="col-sm-4">
+                  </Col>
+                  <Col sm="4">
                     <label><h3>Qué estás bucando?</h3></label>
                     <input className="buscarProd" placeholder="Buscar producto..." id="input1" onKeyUp={this.getInput}/>
-                  </div>
-                </div>
+                  </Col>
+                </Row>
                 <hr className="my-4"/>
                 {prod.splice(0,1,data)}{console.log(prod)}
                 <ErrorBoundary>
@@ -104,15 +95,15 @@ class Home extends Component{
         <Container fluid className="fondo-principal">
           <Barra Count={sessionStorage.getItem('Total')}></Barra>
           <Jumbotron>
-            <div className="row">
-              <div className="col-sm-8">
+            <Row>
+              <Col sm="8">
                 <h1 className="display-5"><span className="glyphicon glyphicon-th text-info"></span> Cátalogo de Productos</h1>
-              </div>
-              <div className="col-sm-4">
+              </Col>
+              <Col sm="4">
                 <label><h3>Qué estás bucando?</h3></label>
                 <input className="buscarProd" placeholder="Buscar producto..." id="input2" onKeyUp={this.getInput} />
-              </div>
-            </div>
+              </Col>
+            </Row>
             <hr className="my-4"/>
             <ErrorBoundary>
               <Filtro Productos={this.state.productos} FiltroProductos={this.productosFiltrados()}></Filtro>
@@ -143,10 +134,6 @@ class Home extends Component{
   }
 
   FilterP = (nombre) => {
-
-    const{
-      productos
-    } = this.state;
 
     console.log(nombre);
     let items = [];

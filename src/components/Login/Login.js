@@ -28,6 +28,7 @@ class Login extends Component{
   constructor(props){
     super(props)
     this.state = { ...INITIAL_STATE };
+    console.log(sessionStorage.getItem('Login'));
   }
 
   onSubmitLogin = (event) => {
@@ -35,7 +36,7 @@ class Login extends Component{
     const {
       email,
       password,
-      isLoginGoogle,
+      //isLoginGoogle,
     } = this.state;
     
     const {
@@ -44,7 +45,7 @@ class Login extends Component{
 
     auth.doSignInWithEmailAndPassword(email, password)
       .then(()=>{
-        this.setState({isLoginGoogle:false});
+        this.setState({isLoginGoogle: false});
         localStorage.setItem("GoogleKey", this.state.isLoginGoogle);
         sessionStorage.setItem('Login', JSON.stringify(true));
         console.log(JSON.parse(sessionStorage.getItem('Login')));
@@ -65,9 +66,9 @@ class Login extends Component{
 
   onSubmitGoogle = (event) => {
 
-    const {
+    /*const {
       isLoginGoogle,
-    } = this.state;
+    } = this.state;*/
 
     const {
       history,

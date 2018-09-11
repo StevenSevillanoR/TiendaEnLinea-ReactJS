@@ -15,7 +15,7 @@ db.collection("productos").get().then((querySnapshot) => {
         const nombre = doc.data().nombre;
         const precio = doc.data().precio;
         const cantidad = doc.data().cantidad;
-        const imagen = doc.data().imagen;
+        //const imagen = doc.data().imagen;
         productos.push({ id: id, nombre: nombre, precio: precio, cantidad: cantidad});
         //console.log(productos);
         //console.log(`${doc.id} => ${doc.data()}`);
